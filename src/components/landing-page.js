@@ -12,7 +12,8 @@ export function LandingPage(props) {
 
     return (
         <div className="home">
-            <h2>Welcome to Foo App</h2>
+            <h2>Welcome to Noted</h2>
+            <p>Learn the incredible variety of musical notation and how it can improve yourself as a musician!</p>
             <LoginForm />
             <Link to="/register">Register</Link>
         </div>

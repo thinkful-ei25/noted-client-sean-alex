@@ -52,7 +52,12 @@ export class LoginForm extends React.Component {
     }
 }
 
-export default reduxForm({
-    form: 'login',
-    onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
+export const RFLoginForm = reduxForm({
+  form: 'login',
+  onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
 })(LoginForm);
+
+export default (props) => <div className="login">
+  <RFLoginForm />
+</div>
+

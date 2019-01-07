@@ -3,6 +3,7 @@ import {Field, reduxForm, focus} from 'redux-form';
 import Input from './input';
 import {login} from '../actions/auth';
 import {required, nonEmpty} from '../validators';
+import {Link} from 'react-router-dom';
 
 export class LoginForm extends React.Component {
     onSubmit(values) {
@@ -24,6 +25,7 @@ export class LoginForm extends React.Component {
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>
+                <h3>Login</h3>
                 {error}
                 <label htmlFor="username">Username</label>
                 <Field
@@ -44,6 +46,7 @@ export class LoginForm extends React.Component {
                 <button disabled={this.props.pristine || this.props.submitting}>
                     Log in
                 </button>
+                <Link to="/"><p>Need an account? Register</p></Link>
             </form>
         );
     }

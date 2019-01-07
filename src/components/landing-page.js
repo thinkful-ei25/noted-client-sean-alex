@@ -1,8 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
-import LoginForm from './login-form';
+
+import  RegistrationPage  from './registration-page';
 
 export function LandingPage(props) {
     // If we are logged in redirect straight to the user's dashboard
@@ -14,8 +15,7 @@ export function LandingPage(props) {
         <div className="home">
             <h2>Welcome to Noted</h2>
             <p>Learn the incredible variety of musical notation and how it can improve yourself as a musician!</p>
-            <LoginForm />
-            <Link to="/register">Register</Link>
+            <RegistrationPage />
         </div>
     );
 }

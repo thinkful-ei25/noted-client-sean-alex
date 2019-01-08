@@ -2,11 +2,11 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import requiresLogin from './requires-login';
-import {fetchProtectedData} from '../actions/protected-data';
+import { fetchUserMetric } from '../actions/score';
 
 export class Dashboard extends React.Component {
     componentDidMount() {
-        this.props.dispatch(fetchProtectedData());
+        this.props.dispatch(fetchUserMetric());
     }
 
     render() {

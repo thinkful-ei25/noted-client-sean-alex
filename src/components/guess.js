@@ -1,7 +1,7 @@
 import React from 'react';
 import requiresLogin from './requires-login';
 import {connect} from 'react-redux';
-import {correctAnswer, incorrectAnswer, resetQuestion} from '../actions/score';
+import {correctAnswer, incorrectAnswer, resetQuestion, sendUserScore, fetchUserMetric} from '../actions/score';
 import { fetchQuizItem } from '../actions/learn';
 
 export class Guess extends React.Component{
@@ -18,6 +18,13 @@ export class Guess extends React.Component{
   }
 
   nextQuestion(){
+    let score = {
+      question: this.props.question.question,
+      correct: this.props.correct
+    };
+    console.log(score);
+    this.props.dispatch(sendUserScore(score));
+    this.props.dispatch(fetchUserMetric());
     this.props.dispatch(resetQuestion());
     this.props.dispatch(fetchQuizItem());
   }

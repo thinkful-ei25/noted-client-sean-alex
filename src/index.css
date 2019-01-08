@@ -21,7 +21,13 @@ body {
 }
 
 .noted-logo{
+  display: inline-block;
   text-align: center;
+}
+
+.controls{
+  display: inline;
+  padding: 2.5px;
 }
 
 a:visited{
@@ -39,6 +45,12 @@ button{
 }
 
 button.logout-button{
+  display: inline-block;
+  vertical-align: center;
+  float: right;
+}
+
+button.dashboard-button{
   display: inline-block;
   vertical-align: center;
   float: right;

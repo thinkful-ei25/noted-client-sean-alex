@@ -33,15 +33,37 @@ export const resetQuestion = () => ({
   type: RESET_QUESTION
 });
 
-export const fetchUserScore = score => dispatch => {
+export const RESET_SESSION = 'RESET_SESSION';
+export const resetSession = () => ({
+type: RESET_SESSION
+});
+
+export const fetchUserMetric = metric => (dispatch, getState) => {
   dispatch(scoreRequest());
-  return fetch(`${API_BASE_URL}/score`, {
+  const authToken = getState().authToken;
+  return fetch(`${API_BASE_URL}/metric`, {
     method: 'GET',
     headers:{
-      'content-type': 'application/json'
+      'content-type': 'application/json',
+      Authorization: `Bearer ${authToken}`
     }
   })
   .then(res => dispatch(normalizeResponseErrors(res)))
   .then(res => dispatch(scoreSuccess(res.json())))
+  .catch(err => dispatch(scoreError(err)))
+}
+
+export const sendUserScore = score => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/score`, {
+    method: 'POST',
+    headers:{
+      'content-type': 'application/json',
+      Authorization: `Bearer ${authToken}`
+    },
+    body: JSON.stringify({score})
+  })
+  .then(res => normalizeResponseErrors(res))
+  .then(res => res.json())
   .catch(err => dispatch(scoreError(err)))
 }

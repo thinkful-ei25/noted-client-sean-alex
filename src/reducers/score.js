@@ -4,7 +4,8 @@ import {
   SCORE_ERROR,
   CORRECT_ANSWER,
   INCORRECT_ANSWER,
-  RESET_QUESTION
+  RESET_QUESTION,
+  RESET_SESSION
 } from '../actions/score'
 
 const initialState = {
@@ -58,6 +59,15 @@ export default function reducer(state = initialState, action) {
   else if(action.type === RESET_QUESTION){
     return {
       ...state,
+      correct: null,
+      loading: false,
+      error: null
+    }
+  }
+  else if(action.type === RESET_SESSION){
+    return {
+      totalCorrect: 0,
+      totalViewed: 0,
       correct: null,
       loading: false,
       error: null

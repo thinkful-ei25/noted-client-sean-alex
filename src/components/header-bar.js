@@ -14,12 +14,12 @@ export class HeaderBar extends React.Component {
         let logOutButton;
         if (this.props.loggedIn) {
             logOutButton = (
-                <button onClick={() => this.logOut()}>Log out</button>
+                <button className='logout-button' onClick={() => this.logOut()}>Log out</button>
             );
         }
         return (
             <div className="header-bar">
-                <h1>NOTED</h1>
+                <img className='noted-logo' src='https://i.imgur.com/eRWuV3X.png' alt='noted-logo'></img>
                 {logOutButton}
             </div>
         );

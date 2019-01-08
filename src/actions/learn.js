@@ -27,6 +27,7 @@ export const fetchQuizItem = item => dispatch => {
     }
   })
   .then(res => normalizeResponseErrors(res))
-  .then(res => itemSuccess(res.json()))
-  .catch(err => itemError(err))
+  .then(res => res.json())
+  .then(data => dispatch(itemSuccess(data)))
+  .catch(err => dispatch(itemError(err)))
 }

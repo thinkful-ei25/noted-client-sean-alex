@@ -5,7 +5,7 @@ import {
 } from '../actions/learn'
 
 const initialState = {
-  question: 'hello',
+  question: '',
   loading: false,
   error: null
 }
@@ -30,7 +30,7 @@ export default function reducer(state = initialState, action) {
     return {
       ...state,
       question: null,
-      loading: null,
+      loading: false,
       error: action.error
     }
   }

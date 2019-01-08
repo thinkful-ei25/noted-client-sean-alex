@@ -9,7 +9,7 @@ export class Guess extends React.Component{
     const answer = {
       guess: e.target.guess.value
     };
-    if(answer.guess === this.props.question){
+    if(answer.guess === this.props.question.name){
       this.props.dispatch(correctAnswer());
     }
     else{
@@ -25,11 +25,14 @@ export class Guess extends React.Component{
   render(){
     let guess;
     if(this.props.correct === null){
-      guess = (<div className='guess-area'>
+      guess = (<form className='guess-area' onSubmit={(e) => {
+        e.preventDefault();
+        this.onSubmit(e);
+      }}>
               <label htmlFor='guess'>Enter your guess:</label>
               <input type="text" name="guess" id="guess"/>
               <button>Submit</button>
-            </div>)
+            </form>)
     }
   
     if(this.props.correct === true){
@@ -39,19 +42,16 @@ export class Guess extends React.Component{
             </div>);
     }
     if(this.props.correct === false){
-      guess = (<div className='correct-feedback'>
+      guess = (<div className='incorrect-feedback'>
               <p>INCORRECT :(</p>
-              <p>The correct answer is {this.props.question}</p>
+              <p>The correct answer is {this.props.question.name}</p>
               <button onClick={() => this.nextQuestion()}>Next</button>
             </div>);
     }
     return(
-      <form onSubmit={(e) => {
-        e.preventDefault();
-        this.onSubmit(e);
-      }}>
+      <div>
         {guess}
-      </form>
+      </div>
     );
   }
   

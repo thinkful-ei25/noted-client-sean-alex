@@ -7,6 +7,7 @@ import learnReducer from './reducers/learn';
 import scoreReducer from './reducers/score';
 import protectedDataReducer from './reducers/protected-data';
 import {setAuthToken, refreshAuthToken} from './actions/auth';
+import {composeWithDevTools} from 'redux-devtools-extension';
 
 const store = createStore(
     combineReducers({
@@ -16,7 +17,7 @@ const store = createStore(
         learn: learnReducer,
         score: scoreReducer
     }),
-    applyMiddleware(thunk)
+    composeWithDevTools(applyMiddleware(thunk))
 );
 
 // Hydrate the authToken from localStorage if it exist

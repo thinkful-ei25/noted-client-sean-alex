@@ -4,6 +4,8 @@ body {
   font-family: sans-serif;
   text-align: center;
   background-image: url('https://i.imgur.com/ReDVHSc.png?1');
+  background-size: 1750px;
+  background-repeat: no-repeat;
 }
 
 .app{
@@ -38,5 +40,6 @@ button{
 
 button.logout-button{
   display: inline-block;
+  vertical-align: center;
   float: right;
 }

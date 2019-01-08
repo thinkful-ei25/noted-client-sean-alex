@@ -41,7 +41,7 @@ export const fetchUserScore = score => dispatch => {
       'content-type': 'application/json'
     }
   })
-  .then(res => normalizeResponseErrors(res))
-  .then(res => scoreSuccess(res.json()))
-  .catch(err => scoreError(err))
+  .then(res => dispatch(normalizeResponseErrors(res)))
+  .then(res => dispatch(scoreSuccess(res.json())))
+  .catch(err => dispatch(scoreError(err)))
 }

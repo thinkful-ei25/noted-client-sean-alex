@@ -39,8 +39,8 @@ export default function reducer(state = initialState, action) {
   }
   else if(action.type === CORRECT_ANSWER){
     return {
-      totalCorrect: state.totalCorrect =+ 1,
-      totalViewed: state.totalViewed =+ 1,
+      totalCorrect: state.totalCorrect + 1,
+      totalViewed: state.totalViewed + 1,
       correct: true,
       loading: false,
       error: null
@@ -49,7 +49,7 @@ export default function reducer(state = initialState, action) {
   else if(action.type === INCORRECT_ANSWER){
     return {
       ...state,
-      totalViewed: state.totalViewed =+ 1,
+      totalViewed: state.totalViewed + 1,
       correct: false,
       loading: false,
       error: null

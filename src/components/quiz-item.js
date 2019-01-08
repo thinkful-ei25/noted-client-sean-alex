@@ -2,21 +2,21 @@ import React from 'react';
 import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
 import {fetchQuizItem} from '../actions/learn';
-import {fetchUserScore}from '../actions/score';
+// import {fetchUserScore}from '../actions/score';
 import Guess  from './guess';
 
 
 export class QuizItem extends React.Component{
   componentDidMount() {
     this.props.dispatch(fetchQuizItem());
-    this.props.dispatch(fetchUserScore());
+    // this.props.dispatch(fetchUserScore());
   }
 
   render(){
     return(
         <div className="quiz-item">
-          <p>Question: {this.props.question}</p>
-          <img src='' alt=''></img>
+          <p>Question: {this.props.question.question}</p>
+          <img src={this.props.question.image} alt=''></img>
           <Guess />
           <div className='user-score'>
             <h3>Today's Stats</h3>

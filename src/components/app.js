@@ -14,7 +14,7 @@ export class App extends React.Component {
             // When we are logged in, refresh the auth token periodically
             this.startPeriodicRefresh();
         } else if (prevProps.loggedIn && !this.props.loggedIn) {
-            // Stop refreshing when we log out
+            // Stop refreshing when we log out s
             this.stopPeriodicRefresh();
         }
     }

@@ -7,6 +7,7 @@ import LandingPage from './landing-page';
 import Dashboard from './dashboard';
 import {refreshAuthToken} from '../actions/auth';
 import LoginPage from './login-page';
+import QuizItem from './quiz-item';
 
 export class App extends React.Component {
     componentDidUpdate(prevProps) {
@@ -45,6 +46,7 @@ export class App extends React.Component {
                 <Route exact path="/" component={LandingPage} />
                 <Route exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/login" component={LoginPage} />
+                <Route exact path="/learn" component={QuizItem} />
             </div>
         );
     }

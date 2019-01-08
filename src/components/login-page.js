@@ -7,7 +7,6 @@ import { RFLoginForm } from './login-form';
 export function LoginPage(props) {
     // If we are logged in (which happens automatically when registration
     // is successful) redirect to the user's dashboard
-    console.log(props.loggedIn)
     if (props.loggedIn) {
         return <Redirect to="/dashboard" />;
     }

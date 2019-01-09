@@ -27,11 +27,23 @@ export const fetchQuizItem = item => (dispatch, getState) => {
     method: 'GET',
     headers: {
       'content-type': 'application/json',
-      Authorization: `Bearer${authToken}`
+      Authorization: `Bearer ${authToken}`
     }
   })
-  .then(res => normalizeResponseErrors(res))
-  .then(res => res.json())
-  .then(data => dispatch(itemSuccess(data)))
-  .catch(err => dispatch(itemError(err)))
-}
+  // .then(res => { 
+  //   console.log('res', res); 
+  //   // normalizeResponseErrors(res); 
+  // })
+  .then(res => { 
+    console.log('res', res); 
+    res.json(); 
+  })
+  .then(data => { 
+    console.log('data', data); 
+    dispatch(itemSuccess(data)); 
+  })
+  .catch(err => { 
+    console.log('err', err); 
+    dispatch(itemError(err)); 
+  }); 
+}; 

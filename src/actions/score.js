@@ -1,5 +1,6 @@
 import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
+import {loadAuthToken} from '../local-storage'; 
 
 export const SCORE_REQUEST = 'SCORE_REQUEST';
 export const scoreRequest = () =>({
@@ -7,9 +8,9 @@ export const scoreRequest = () =>({
 });
 
 export const SCORE_SUCCESS = 'SCORE_SUCCESS';
-export const scoreSuccess = (score) => ({
+export const scoreSuccess = (feedback) => ({
   type: SCORE_SUCCESS,
-  score
+  feedback
 });
 
 export const SCORE_ERROR = 'SCORE_ERROR';
@@ -40,7 +41,9 @@ type: RESET_SESSION
 
 export const fetchUserMetric = metric => (dispatch, getState) => {
   dispatch(scoreRequest());
-  const authToken = getState().authToken;
+
+  const authToken = loadAuthToken(); 
+
   return fetch(`${API_BASE_URL}/metric`, {
     method: 'GET',
     headers:{
@@ -53,17 +56,21 @@ export const fetchUserMetric = metric => (dispatch, getState) => {
   .catch(err => dispatch(scoreError(err)))
 }
 
-export const sendUserScore = score => (dispatch, getState) => {
-  const authToken = getState().auth.authToken;
+export const sendUserScore = guess => (dispatch, getState) => {
+  dispatch(scoreRequest());
+  const authToken = loadAuthToken();
   return fetch(`${API_BASE_URL}/score`, {
     method: 'POST',
     headers:{
       'content-type': 'application/json',
       Authorization: `Bearer ${authToken}`
     },
-    body: JSON.stringify({score})
+    body: JSON.stringify(guess)
   })
   .then(res => normalizeResponseErrors(res))
   .then(res => res.json())
+  .then(data => dispatch(scoreSuccess(data)))
   .catch(err => dispatch(scoreError(err)))
 }
+
+

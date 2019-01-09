@@ -9,22 +9,20 @@ export class Guess extends React.Component{
     const answer = {
       guess: e.target.guess.value
     };
-    if(answer.guess === this.props.question.name){
+    console.log(answer);
+    this.props.dispatch(sendUserScore(answer)).then(() => this.scoremodifier());
+  }
+
+  scoremodifier(){
+    if(this.props.correct === true){
       this.props.dispatch(correctAnswer());
     }
-    else{
+    else if(this.props.correct === false) {
       this.props.dispatch(incorrectAnswer());
     }
   }
 
   nextQuestion(){
-    let score = {
-      question: this.props.question.question,
-      correct: this.props.correct
-    };
-    console.log(score);
-    this.props.dispatch(sendUserScore(score));
-    this.props.dispatch(fetchUserMetric());
     this.props.dispatch(resetQuestion());
     this.props.dispatch(fetchQuizItem());
   }

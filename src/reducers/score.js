@@ -27,6 +27,7 @@ export default function reducer(state = initialState, action) {
   else if(action.type === SCORE_SUCCESS){
     return {
       ...state,
+      correct: action.feedback.isValid,
       loading: false,
       error: null
     }

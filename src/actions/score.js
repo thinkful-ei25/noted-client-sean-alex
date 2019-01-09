@@ -8,9 +8,9 @@ export const scoreRequest = () =>({
 });
 
 export const SCORE_SUCCESS = 'SCORE_SUCCESS';
-export const scoreSuccess = (score) => ({
+export const scoreSuccess = (feedback) => ({
   type: SCORE_SUCCESS,
-  score
+  feedback
 });
 
 export const SCORE_ERROR = 'SCORE_ERROR';
@@ -56,6 +56,7 @@ export const fetchUserMetric = metric => (dispatch, getState) => {
   .catch(err => dispatch(scoreError(err)))
 }
 
+<<<<<<< HEAD
 export const sendUserScore = score => (dispatch, getState) => {
   // console.log('sending score'); 
 
@@ -91,4 +92,23 @@ export const sendUserScore = score => (dispatch, getState) => {
     .catch(err => { 
       // dispatch(itemError(err)); 
     });
+=======
+export const sendUserScore = guess => (dispatch, getState) => {
+  dispatch(scoreRequest());
+  const authToken = loadAuthToken();
+  return fetch(`${API_BASE_URL}/score`, {
+    method: 'POST',
+    headers:{
+      'content-type': 'application/json',
+      Authorization: `Bearer ${authToken}`
+    },
+    body: JSON.stringify(guess)
+  })
+  .then(res => normalizeResponseErrors(res))
+  .then(res => res.json())
+  .then(data => dispatch(scoreSuccess(data)))
+  .catch(err => dispatch(scoreError(err)))
+>>>>>>> cab970251a194574990c898866bf69ae7168fd63
 }
+
+

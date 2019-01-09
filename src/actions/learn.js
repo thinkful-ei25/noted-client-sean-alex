@@ -18,12 +18,16 @@ export const itemError = (error) => ({
   error
 });
 
-export const fetchQuizItem = item => dispatch => {
+export const fetchQuizItem = item => (dispatch, getState) => {
   dispatch(itemRequest());
+
+  const authToken = getState().auth.authToken;
+
   return fetch(`${API_BASE_URL}/question`, {
     method: 'GET',
     headers: {
-      'content-type': 'application/json'
+      'content-type': 'application/json',
+      Authorization: `Bearer${authToken}`
     }
   })
   .then(res => normalizeResponseErrors(res))

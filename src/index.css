@@ -19,7 +19,12 @@ body {
   color: white;
   background-color: black;
 }
-
+.quiz-pic{ 
+  min-height: 300px; 
+  min-width: 300px;
+  max-height: 300px; 
+  min-width: 300px; 
+}
 .noted-logo{
   display: inline-block;
   text-align: center;

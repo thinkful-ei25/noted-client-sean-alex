@@ -16,7 +16,7 @@ export class QuizItem extends React.Component{
     return(
         <div className="quiz-item">
           <p>Question: {this.props.question.name}</p>
-          <img src={this.props.question.image} alt=''></img>
+          <img src={this.props.question.img} alt=''></img>
           <Guess />
           <div className='user-score'>
             <h3>Today's Stats</h3>

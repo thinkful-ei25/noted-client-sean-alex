@@ -43,7 +43,7 @@ export const fetchUserMetric = metric => (dispatch, getState) => {
   dispatch(scoreRequest());
 
   const authToken = loadAuthToken(); 
-  console.log('authToken', authToken)
+
   return fetch(`${API_BASE_URL}/metric`, {
     method: 'GET',
     headers:{

@@ -19,7 +19,6 @@ export default function reducer(state = initialState, action) {
     }
   }
   else if(action.type === ITEM_SUCCESS){
-    console.log('fun', action.item)
     return {
       ...state,
       question: action.item,
@@ -28,7 +27,7 @@ export default function reducer(state = initialState, action) {
     }
   }
   else if(action.type === ITEM_ERROR){
-
+    console.log('ERROR ERRROR')
     return {
       ...state,
       question: null,

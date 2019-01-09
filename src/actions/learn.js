@@ -1,5 +1,6 @@
 import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
+import {loadAuthToken} from '../local-storage';
 
 export const ITEM_REQUEST = 'ITEM_REQUEST';
 export const itemRequest = () => ({
@@ -21,29 +22,20 @@ export const itemError = (error) => ({
 export const fetchQuizItem = item => (dispatch, getState) => {
   dispatch(itemRequest());
 
-  const authToken = getState().auth.authToken;
+  const authToken = loadAuthToken(); 
 
-  return fetch(`${API_BASE_URL}/question`, {
-    method: 'GET',
-    headers: {
-      'content-type': 'application/json',
+  return fetch(`${API_BASE_URL}/question`, { 
+    method: 'GET', 
+    headers: { 
       Authorization: `Bearer ${authToken}`
     }
   })
-  .then(res => { 
-    console.log('res', res); 
-    normalizeResponseErrors(res); 
-  })
-  .then(res => { 
-    console.log('res', res); 
-    res.json(); 
-  })
-  .then(data => { 
-    console.log('data', data); 
-    dispatch(itemSuccess(data)); 
-  })
-  .catch(err => { 
-    console.log('err', err); 
-    dispatch(itemError(err)); 
-  }); 
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json()) 
+    .then((data) => { 
+      dispatch(itemSuccess(data));      
+    })
+    .catch(err => { 
+      dispatch(itemError(err)); 
+    });
 }; 

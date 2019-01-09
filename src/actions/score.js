@@ -57,17 +57,38 @@ export const fetchUserMetric = metric => (dispatch, getState) => {
 }
 
 export const sendUserScore = score => (dispatch, getState) => {
+  // console.log('sending score'); 
+
+  // const authToken = loadAuthToken(); 
+  // console.log('auth', authToken); 
+  // return fetch(`${API_BASE_URL}/score`, {
+  //   method: 'POST',
+  //   headers:{
+  //     'content-type': 'application/json',
+  //     Authorization: `Bearer ${authToken}`
+  //   },
+  //   body: JSON.stringify({score})
+  // })
+  // .then(res => normalizeResponseErrors(res))
+  // .then(res => res.json())
   
+
   const authToken = loadAuthToken(); 
-  return fetch(`${API_BASE_URL}/score`, {
-    method: 'POST',
-    headers:{
-      'content-type': 'application/json',
+  
+
+  return fetch(`${API_BASE_URL}/score`, { 
+    method: 'POST', 
+    headers: { 
       Authorization: `Bearer ${authToken}`
-    },
-    body: JSON.stringify({score})
+    }
   })
-  .then(res => normalizeResponseErrors(res))
-  .then(res => res.json())
-  .catch(err => dispatch(scoreError(err)))
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json()) 
+    .then((data) => { 
+      console.log(data); 
+      // dispatch(itemSuccess(data));      
+    })
+    .catch(err => { 
+      // dispatch(itemError(err)); 
+    });
 }

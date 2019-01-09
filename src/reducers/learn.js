@@ -28,6 +28,7 @@ export default function reducer(state = initialState, action) {
     }
   }
   else if(action.type === ITEM_ERROR){
+
     return {
       ...state,
       question: null,

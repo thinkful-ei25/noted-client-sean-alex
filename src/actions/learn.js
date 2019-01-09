@@ -30,10 +30,10 @@ export const fetchQuizItem = item => (dispatch, getState) => {
       Authorization: `Bearer ${authToken}`
     }
   })
-  // .then(res => { 
-  //   console.log('res', res); 
-  //   // normalizeResponseErrors(res); 
-  // })
+  .then(res => { 
+    console.log('res', res); 
+    normalizeResponseErrors(res); 
+  })
   .then(res => { 
     console.log('res', res); 
     res.json(); 

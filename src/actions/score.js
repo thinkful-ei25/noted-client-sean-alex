@@ -1,5 +1,6 @@
 import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
+import {loadAuthToken} from '../local-storage'; 
 
 export const SCORE_REQUEST = 'SCORE_REQUEST';
 export const scoreRequest = () =>({
@@ -40,7 +41,9 @@ type: RESET_SESSION
 
 export const fetchUserMetric = metric => (dispatch, getState) => {
   dispatch(scoreRequest());
-  const authToken = getState().authToken;
+
+  const authToken = loadAuthToken(); 
+  console.log('authToken', authToken)
   return fetch(`${API_BASE_URL}/metric`, {
     method: 'GET',
     headers:{
@@ -54,7 +57,8 @@ export const fetchUserMetric = metric => (dispatch, getState) => {
 }
 
 export const sendUserScore = score => (dispatch, getState) => {
-  const authToken = getState().auth.authToken;
+  
+  const authToken = loadAuthToken(); 
   return fetch(`${API_BASE_URL}/score`, {
     method: 'POST',
     headers:{

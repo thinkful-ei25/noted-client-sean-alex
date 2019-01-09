@@ -22,7 +22,7 @@ export class Guess extends React.Component{
       question: this.props.question.question,
       correct: this.props.correct
     };
-    console.log(score);
+    // console.log(score);
     this.props.dispatch(sendUserScore(score));
     this.props.dispatch(fetchUserMetric());
     this.props.dispatch(resetQuestion());

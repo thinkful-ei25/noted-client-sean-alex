@@ -1,7 +1,7 @@
 import React from 'react';
 import requiresLogin from './requires-login';
 import {connect} from 'react-redux';
-import {correctAnswer, incorrectAnswer, resetQuestion, sendUserScore, fetchUserMetric} from '../actions/score';
+import {correctAnswer, incorrectAnswer, resetQuestion, sendUserScore} from '../actions/score';
 import { fetchQuizItem } from '../actions/learn';
 
 export class Guess extends React.Component{

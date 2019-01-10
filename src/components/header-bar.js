@@ -17,6 +17,7 @@ export class HeaderBar extends React.Component {
     }
 
     logScore(){
+        this.props.dispatch(endUserSession());
         this.props.dispatch(resetSession());
     }
 

@@ -8,8 +8,8 @@ import {
 const initialState = {
   // numberOfSessions: 0,
   // currentAverage: 0,
-  // runningAverage: 0,
-  improvement: 0,
+  allSessionsAvg: null,
+  lastSessionAvg: null,
   loading: false,
   error: null
 }
@@ -23,11 +23,11 @@ export default function reducer(state=initialState, action){
     }
   }
   else if(action.type === METRIC_SUCCESS){
+    console.log(action.metric);
     return{
-      // numberOfSessions: action.metric.numberOfSessions,
-      // currentAverage: action.metric.currentAverage,
-      // runningAverage: action.metric.runningAverage,
-      improvement: action.metric.improvement,
+      ...state,
+      allSessionsAvg: action.metric.allSessionsAvg,
+      lastSessionAvg: action.metric.lastSessionAvg,
       loading: false,
       error: null
     }

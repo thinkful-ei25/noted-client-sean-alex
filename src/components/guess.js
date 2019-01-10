@@ -1,13 +1,15 @@
 import React from 'react';
 import requiresLogin from './requires-login';
 import {connect} from 'react-redux';
-import {resetQuestion, sendUserScore} from '../actions/score';
+import {Link} from 'react-router-dom';
+import {resetSession, sendUserScore, resetQuestion} from '../actions/score'
+import {endUserSession} from '../actions/metric';
 import { fetchQuizItem } from '../actions/learn';
 
 export class Guess extends React.Component{
   
   //manage score on back-end and manage data in state
-  
+
   constructor(props){ 
     super(props); 
     this.totalCorrect = 0; 
@@ -26,7 +28,12 @@ export class Guess extends React.Component{
     this.props.dispatch(resetQuestion());
     this.props.dispatch(fetchQuizItem());
   }
-  
+
+  logScore(){
+    this.props.dispatch(endUserSession());
+    this.props.dispatch(resetSession());
+  }
+
   render(){
     let guess;
     if(this.props.correct === null){
@@ -62,10 +69,11 @@ export class Guess extends React.Component{
       <div>
         {guess}
         <div className='user-score'>
-            <h3>Today's Stats</h3>
-            <p>Total Correct: {this.totalCorrect}</p>
-            <p>Total Viewed: {this.totalViewed} </p>
-          </div>
+          <h3>Today's Stats</h3>
+          <p>Total Correct: {this.totalCorrect}</p>
+          <p>Total Viewed: {this.totalViewed} </p>
+        </div>
+        <Link to ='/dashboard' onClick={() => this.logScore()}><button>Dashboard</button></Link>
       </div>
     );
   }

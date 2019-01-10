@@ -17,7 +17,7 @@ const store = createStore(
         protectedData: protectedDataReducer,
         learn: learnReducer,
         score: scoreReducer,
-        metric: metricReducer
+        metric: metricReducer,
     }),
     composeWithDevTools(applyMiddleware(thunk))
 );

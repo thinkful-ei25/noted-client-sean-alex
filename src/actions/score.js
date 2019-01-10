@@ -75,6 +75,7 @@ export const sendUserScore = guess => (dispatch) => {
     let score; 
     if (data.score) score = data.score; 
     const scoreObj = {isValid: data.isValid, score: score}; 
+    
     dispatch(scoreSuccess(scoreObj))
   })
   .catch(err => dispatch(scoreError(err)))

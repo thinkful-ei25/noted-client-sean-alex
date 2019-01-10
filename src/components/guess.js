@@ -9,7 +9,7 @@ export class Guess extends React.Component{
     const answer = {
       guess: e.target.guess.value
     };
-    console.log(answer);
+    // console.log(answer);
     this.props.dispatch(sendUserScore(answer)).then(() => this.scoremodifier());
   }
 

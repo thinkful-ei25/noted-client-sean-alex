@@ -2,11 +2,11 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import requiresLogin from './requires-login';
-import { fetchUserMetric } from '../actions/score';
+// import { fetchUserMetric } from '../actions/score';
 
 export class Dashboard extends React.Component {
     componentDidMount() {
-        this.props.dispatch(fetchUserMetric());
+        // this.props.dispatch(fetchUserMetric());
     }
 
     render() {
@@ -25,9 +25,9 @@ export class Dashboard extends React.Component {
 const mapStateToProps = state => {
     const {currentUser} = state.auth;
     return {
-        username: state.auth.currentUser.username,
-        name: `${currentUser.fullname}`,
-        protectedData: state.protectedData.data
+      username: state.auth.currentUser.username,
+      name: `${currentUser.fullname}`,
+      protectedData: state.protectedData.data
     };
 };
 

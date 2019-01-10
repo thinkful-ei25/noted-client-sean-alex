@@ -10,9 +10,7 @@ export class HeaderBar extends React.Component {
         this.props.dispatch(endUserSession());
         this.props.dispatch(resetSession());
         this.props.dispatch(clearAuth());
-        clearAuthToken();
-
-        
+        clearAuthToken();  
     }
 
     render() {

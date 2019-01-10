@@ -50,3 +50,19 @@ export const startUserSession = data => (dispatch, getState) => {
   .then(res => res.json())
   .catch(err => dispatch(metricError(err)));
 }
+
+export const endUserSession = data => (dispatch, getState) => {
+  dispatch(metricRequest());
+  const authToken = loadAuthToken();
+
+  return fetch(`${API_BASE_URL}/metric/endSession`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+  .then(res => normalizeResponseErrors(res))
+  .then(res => res.json())
+  .catch(err => dispatch(metricError(err)));
+}
+

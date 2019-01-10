@@ -7,6 +7,7 @@ import { fetchQuizItem } from '../actions/learn';
 export class Guess extends React.Component{
   
   //manage score on back-end and manage data in state
+  
   constructor(props){ 
     super(props); 
     this.totalCorrect = 0; 

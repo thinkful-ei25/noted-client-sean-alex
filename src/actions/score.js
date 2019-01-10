@@ -39,7 +39,7 @@ export const resetSession = () => ({
 type: RESET_SESSION
 });
 
-export const fetchUserMetric = metric => (dispatch, getState) => {
+export const fetchUserMetric = () => (dispatch) => {
   dispatch(scoreRequest());
 
   const authToken = loadAuthToken(); 
@@ -56,7 +56,7 @@ export const fetchUserMetric = metric => (dispatch, getState) => {
   .catch(err => dispatch(scoreError(err)))
 }
 
-export const sendUserScore = guess => (dispatch, getState) => {
+export const sendUserScore = guess => (dispatch) => {
   dispatch(scoreRequest());
   const authToken = loadAuthToken();
   return fetch(`${API_BASE_URL}/score`, {
@@ -69,8 +69,14 @@ export const sendUserScore = guess => (dispatch, getState) => {
   })
   .then(res => normalizeResponseErrors(res))
   .then(res => res.json())
-  .then(data => dispatch(scoreSuccess(data)))
+  .then(data => { 
+    // console.log('isValid', data.isValid, 'score', data.score)
+    // console.log(data)
+    let score; 
+    if (data.score) score = data.score; 
+    const scoreObj = {isValid: data.isValid, score: score}; 
+    dispatch(scoreSuccess(scoreObj))
+  })
   .catch(err => dispatch(scoreError(err)))
-  }
 
-
+}

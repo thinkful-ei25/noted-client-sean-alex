@@ -2,8 +2,8 @@ import {
   SCORE_REQUEST, 
   SCORE_SUCCESS, 
   SCORE_ERROR,
-  CORRECT_ANSWER,
-  INCORRECT_ANSWER,
+  // CORRECT_ANSWER,
+  // INCORRECT_ANSWER,
   RESET_QUESTION,
   RESET_SESSION
 } from '../actions/score'
@@ -12,6 +12,7 @@ const initialState = {
   totalCorrect: 0,
   totalViewed: 0,
   correct: null,
+  score: 0, 
   loading: false,
   error: null
 }
@@ -28,6 +29,7 @@ export default function reducer(state = initialState, action) {
     return {
       ...state,
       correct: action.feedback.isValid,
+      score: action.feedback.score, 
       loading: false,
       error: null
     }
@@ -39,28 +41,32 @@ export default function reducer(state = initialState, action) {
       error: action.error
     }
   }
-  else if(action.type === CORRECT_ANSWER){
-    return {
-      totalCorrect: state.totalCorrect + 1,
-      totalViewed: state.totalViewed + 1,
-      correct: true,
-      loading: false,
-      error: null
-    }
-  }
-  else if(action.type === INCORRECT_ANSWER){
-    return {
-      ...state,
-      totalViewed: state.totalViewed + 1,
-      correct: false,
-      loading: false,
-      error: null
-    }
-  }
+  // else if(action.type === CORRECT_ANSWER){
+
+  //   return {
+  //     totalCorrect: state.totalCorrect + 1,
+  //     totalViewed: state.totalViewed + 1,
+  //     correct: true,
+  //     score: score, 
+  //     loading: false,
+  //     error: null
+  //   }
+  // }
+  // else if(action.type === INCORRECT_ANSWER){
+  //   return {
+  //     ...state,
+  //     totalViewed: state.totalViewed + 1,
+  //     correct: false,
+  //     score:  action.feedback.score, 
+  //     loading: false,
+  //     error: null
+  //   }
+  // }
   else if(action.type === RESET_QUESTION){
     return {
       ...state,
       correct: null,
+      score: null, 
       loading: false,
       error: null
     }
@@ -70,6 +76,7 @@ export default function reducer(state = initialState, action) {
       totalCorrect: 0,
       totalViewed: 0,
       correct: null,
+      score: null, 
       loading: false,
       error: null
     }

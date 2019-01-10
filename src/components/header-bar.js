@@ -8,12 +8,11 @@ import { endUserSession } from '../actions/metric';
 
 export class HeaderBar extends React.Component {
     logOut() {
-        this.props.dispatch(endUserSession())
-        .then(() => {
-            this.props.dispatch(resetSession());
-            this.props.dispatch(clearAuth());
-            clearAuthToken();
-        });
+        this.props.dispatch(endUserSession());
+        this.props.dispatch(resetSession());
+        this.props.dispatch(clearAuth());
+        clearAuthToken();
+;
         
     }
 

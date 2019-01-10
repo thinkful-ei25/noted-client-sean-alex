@@ -20,6 +20,11 @@ export const metricError = error => ({
   error
 });
 
+export const METRIC_SENT = 'METRIC_SENT';
+export const metricSent = () => ({
+  type: METRIC_SENT
+});
+
 export const fetchMetricData = data => (dispatch, getState) => {
   dispatch(metricRequest());
   const authToken = loadAuthToken();

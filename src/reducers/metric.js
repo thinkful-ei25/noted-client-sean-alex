@@ -1,7 +1,8 @@
 import {
   METRIC_REQUEST,
   METRIC_SUCCESS,
-  METRIC_ERROR
+  METRIC_ERROR,
+  METRIC_SENT
 } from '../actions/metric'
 
 const initialState = {
@@ -36,6 +37,13 @@ export default function reducer(state=initialState, action){
       ...state,
       loading: false,
       error: action.error
+    }
+  }
+  else if(action.type === METRIC_SENT){
+    return{
+      ...state,
+      loading: false,
+      error: null
     }
   }
   return state;

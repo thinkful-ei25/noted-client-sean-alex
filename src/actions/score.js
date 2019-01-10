@@ -39,23 +39,6 @@ export const resetSession = () => ({
 type: RESET_SESSION
 });
 
-export const fetchUserMetric = () => (dispatch) => {
-  dispatch(scoreRequest());
-
-  const authToken = loadAuthToken(); 
-
-  return fetch(`${API_BASE_URL}/metric`, {
-    method: 'GET',
-    headers:{
-      'content-type': 'application/json',
-      Authorization: `Bearer ${authToken}`
-    }
-  })
-  .then(res => dispatch(normalizeResponseErrors(res)))
-  .then(res => dispatch(scoreSuccess(res.json())))
-  .catch(err => dispatch(scoreError(err)))
-}
-
 export const sendUserScore = guess => (dispatch) => {
   dispatch(scoreRequest());
   const authToken = loadAuthToken();

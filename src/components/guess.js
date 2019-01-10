@@ -5,28 +5,21 @@ import {resetQuestion, sendUserScore} from '../actions/score';
 import { fetchQuizItem } from '../actions/learn';
 
 export class Guess extends React.Component{
+  
+  //manage score on back-end and manage data in state
   constructor(props){ 
     super(props); 
     this.totalCorrect = 0; 
     this.totalViewed = 0; 
   }
+
   onSubmit(e){
     const answer = {
       guess: e.target.guess.value
     };
 
     this.props.dispatch(sendUserScore(answer))
-      // .then(() => this.scoremodifier());
   }
-
-  // scoremodifier(){
-  //   if(this.props.correct === true){
-  //     // this.props.dispatch(correctAnswer());
-  //   }
-  //   else if(this.props.correct === false) {
-  //     // this.props.dispatch(incorrectAnswer());
-  //   }
-  // }
 
   nextQuestion(){
     this.props.dispatch(resetQuestion());

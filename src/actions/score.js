@@ -70,13 +70,7 @@ export const sendUserScore = guess => (dispatch) => {
   .then(res => normalizeResponseErrors(res))
   .then(res => res.json())
   .then(data => { 
-    // console.log('isValid', data.isValid, 'score', data.score)
-    // console.log(data)
-    let score; 
-    if (data.score) score = data.score; 
-    const scoreObj = {isValid: data.isValid, score: score}; 
-    
-    dispatch(scoreSuccess(scoreObj))
+    dispatch(scoreSuccess(data))
   })
   .catch(err => dispatch(scoreError(err)))
 

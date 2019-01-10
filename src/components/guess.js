@@ -5,6 +5,11 @@ import {resetQuestion, sendUserScore} from '../actions/score';
 import { fetchQuizItem } from '../actions/learn';
 
 export class Guess extends React.Component{
+  constructor(props){ 
+    super(props); 
+    this.totalCorrect = 0; 
+    this.totalViewed = 0; 
+  }
   onSubmit(e){
     const answer = {
       guess: e.target.guess.value
@@ -42,6 +47,8 @@ export class Guess extends React.Component{
     }
   
     if(this.props.correct === true){
+      this.totalViewed++; 
+      this.totalCorrect++; 
       guess = (<div className='correct-feedback'>
               <p><b>CORRECT!</b></p>
               <p>SCORE: <b>{this.props.score}</b> </p>              
@@ -49,6 +56,7 @@ export class Guess extends React.Component{
             </div>);
     }
     if(this.props.correct === false){
+      this.totalViewed++; 
       guess = (<div className='incorrect-feedback'>
               <p><b>INCORRECT :(</b></p>
               <p>SCORE: <b>{this.props.score}</b></p>
@@ -59,6 +67,11 @@ export class Guess extends React.Component{
     return(
       <div>
         {guess}
+        <div className='user-score'>
+            <h3>Today's Stats</h3>
+            <p>Total Correct: {this.totalCorrect}</p>
+            <p>Total Viewed: {this.totalViewed} </p>
+          </div>
       </div>
     );
   }

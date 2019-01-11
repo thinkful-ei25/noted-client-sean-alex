@@ -84,6 +84,11 @@ button.progress-button{
   border-radius: 4px;
 }
 
+.dashboard-name{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .quiz-pic{
   width: 325px;
   height: auto;

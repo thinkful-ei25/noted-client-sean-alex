@@ -20,7 +20,7 @@ export class Dashboard extends React.Component {
             <div className="dashboard">
                 <button className='logout-button' onClick={() => this.logOut()}>Log out</button>
                 <img className='dashboard-img' src="https://i.imgur.com/p4W7NlO.jpg" alt='symphony-orchestra'></img>
-                <div className="dashboard-name">Welcome {this.props.name}!</div>
+                <div className="dashboard-name"><b>Welcome {this.props.name}!</b></div>
                 <div className='dashboard-controls'>
                     <Link to='/learn'><button className='learn-button' onClick={() => this.props.dispatch(startUserSession())}>Let's Learn</button></Link>
                     <Link to='/progress'><button className='progress-button'>Progress</button></Link>

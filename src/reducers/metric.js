@@ -8,8 +8,8 @@ import {
 const initialState = {
   // numberOfSessions: 0,
   // currentAverage: 0,
-  allSessionsAvg: null,
-  lastSessionAvg: null,
+  allSessionsAvg: 0,
+  lastSessionAvg: 0,
   loading: false,
   error: null
 }

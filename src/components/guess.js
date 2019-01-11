@@ -30,6 +30,7 @@ export class Guess extends React.Component{
   }
 
   logScore(){
+    console.log('Dashboard')
     this.props.dispatch(endUserSession());
     this.props.dispatch(resetSession());
   }
@@ -73,7 +74,7 @@ export class Guess extends React.Component{
           <p>Total Correct: {this.totalCorrect}</p>
           <p>Total Viewed: {this.totalViewed} </p>
         </div>
-        <Link to ='/dashboard' onClick={() => this.logScore()}><button>Dashboard</button></Link>
+        <Link to ='/dashboard'><button onClick={() => this.logScore()}>Dashboard</button></Link>
       </div>
     );
   }

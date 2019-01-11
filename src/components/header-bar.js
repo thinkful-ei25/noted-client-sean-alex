@@ -7,6 +7,7 @@ import { endUserSession } from '../actions/metric';
 
 export class HeaderBar extends React.Component {
     logOut() {
+        console.log('Logout');
         this.props.dispatch(endUserSession());
         this.props.dispatch(resetSession());
         this.props.dispatch(clearAuth());

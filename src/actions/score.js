@@ -39,6 +39,7 @@ export const resetSession = () => ({
 type: RESET_SESSION
 });
 
+//async sends score after each question answered
 export const sendUserScore = guess => (dispatch) => {
   dispatch(scoreRequest());
   const authToken = loadAuthToken();

@@ -1,34 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {clearAuth} from '../actions/auth';
-import {clearAuthToken} from '../local-storage';
-import { resetSession } from '../actions/score';
-import { endUserSession } from '../actions/metric';
 
 export class HeaderBar extends React.Component {
-    logOut() {
-        console.log('Logout');
-        this.props.dispatch(endUserSession());
-        this.props.dispatch(resetSession());
-        this.props.dispatch(clearAuth());
-        clearAuthToken();  
-    }
 
     render() {
-        // Only render the log out button if we are logged in
-        let logOutButton;
-        if (this.props.loggedIn) {
-            logOutButton = (
-                <button className='logout-button' onClick={() => this.logOut()}>Log out</button>
-            );
-        }
-
         return (
             <div className="header-bar">
                 <img className='noted-logo' src='https://i.imgur.com/eRWuV3X.png' alt='noted-logo'></img>
-                <div className='controls'>
-                {logOutButton}
-                </div>
             </div>
         );
     }

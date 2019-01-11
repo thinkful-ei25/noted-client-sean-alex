@@ -7,8 +7,6 @@ import {endUserSession} from '../actions/metric';
 import { fetchQuizItem } from '../actions/learn';
 
 export class Guess extends React.Component{
-  
-  //manage score on back-end and manage data in state
 
   constructor(props){ 
     super(props); 
@@ -30,7 +28,6 @@ export class Guess extends React.Component{
   }
 
   logScore(){
-    console.log('Dashboard')
     this.props.dispatch(endUserSession());
     this.props.dispatch(resetSession());
   }
@@ -53,7 +50,7 @@ export class Guess extends React.Component{
       this.totalCorrect++; 
       guess = (<div className='correct-feedback'>
               <p><b>CORRECT!</b></p>
-              <p>SCORE: <b>{this.props.score}</b> </p>              
+              <p> Definition: {this.props.question.description} </p>        
               <button onClick={() => this.nextQuestion()}>Next</button>
             </div>);
     }
@@ -61,8 +58,8 @@ export class Guess extends React.Component{
       this.totalViewed++; 
       guess = (<div className='incorrect-feedback'>
               <p><b>INCORRECT :(</b></p>
-              <p>SCORE: <b>{this.props.score}</b></p>
               <p>The correct answer is {this.props.question.name}</p>
+              <p> Definition: {this.props.question.description} </p> 
               <button onClick={() => this.nextQuestion()}>Next</button>
             </div>);
     }
@@ -70,9 +67,9 @@ export class Guess extends React.Component{
       <div>
         {guess}
         <div className='user-score'>
-          <h3>Today's Stats</h3>
-          <p>Total Correct: {this.totalCorrect}</p>
-          <p>Total Viewed: {this.totalViewed} </p>
+          <h3><u>Today's Stats</u></h3>
+          <p><b>Total Correct: {this.totalCorrect}</b></p>
+          <p><b>Total Viewed: {this.totalViewed} </b></p>
         </div>
         <Link to ='/dashboard'><button onClick={() => this.logScore()}>Dashboard</button></Link>
       </div>

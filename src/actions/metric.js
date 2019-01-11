@@ -25,6 +25,7 @@ export const metricSent = () => ({
   type: METRIC_SENT
 });
 
+// async to retrive metric data of current session and past sessionss
 export const fetchMetricData = data => (dispatch, getState) => {
   dispatch(metricRequest());
   const authToken = loadAuthToken();
@@ -41,6 +42,7 @@ export const fetchMetricData = data => (dispatch, getState) => {
   .catch(err => dispatch(metricError(err)));
 }
 
+// async initializes session recording on server side
 export const startUserSession = data => (dispatch, getState) => {
   dispatch(metricRequest());
   const authToken = loadAuthToken();
@@ -56,6 +58,7 @@ export const startUserSession = data => (dispatch, getState) => {
   .catch(err => dispatch(metricError(err)));
 }
 
+// async notifies server that user has ended session and server can now log/calculate information
 export const endUserSession = data => (dispatch, getState) => {
   dispatch(metricRequest());
   const authToken = loadAuthToken();

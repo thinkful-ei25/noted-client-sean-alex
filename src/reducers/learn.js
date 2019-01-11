@@ -27,7 +27,6 @@ export default function reducer(state = initialState, action) {
     }
   }
   else if(action.type === ITEM_ERROR){
-    console.log('ERROR ERRROR')
     return {
       ...state,
       question: null,

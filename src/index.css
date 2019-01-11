@@ -49,14 +49,43 @@ button{
   margin:5px;
 }
 
+button:hover{
+  background-color: black;
+  color: white;
+}
+
 button.logout-button{
   display: inline-block;
+  margin-left: 100px;
+  margin-right: 100px;
   vertical-align: center;
-  float: right;
 }
 
 button.dashboard-button{
   display: inline-block;
   vertical-align: center;
   float: right;
+}
+
+button.learn-button{
+  width: 125px;
+  height: 100px;
+}
+
+button.progress-button{
+  width: 125px;
+  height: 100px;
+}
+
+.dashboard-img{
+  display: block;
+  width: 325px;
+  height: auto;
+  border-radius: 4px;
+}
+
+.quiz-pic{
+  width: 325px;
+  height: auto;
+  border-radius: 4px;
 }

@@ -14,7 +14,7 @@ export function LandingPage(props) {
     return (
         <div className="home">
             <h2>Welcome to Noted</h2>
-            <p>Learn the incredible variety of musical notation and how it can improve yourself as a musician!</p>
+            <p>Learn about the incredible variety of musical notation and how it can improve yourself as a musician!</p>
             <RegistrationPage />
         </div>
     );

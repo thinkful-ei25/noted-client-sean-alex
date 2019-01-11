@@ -3,18 +3,28 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import requiresLogin from './requires-login';
 import { startUserSession } from '../actions/metric';
+import {clearAuth} from '../actions/auth';
+import {clearAuthToken} from '../local-storage';
+import { resetSession } from '../actions/score';
+
 
 export class Dashboard extends React.Component {
+    logOut() {
+        this.props.dispatch(resetSession());
+        this.props.dispatch(clearAuth());
+        clearAuthToken();  
+    }
 
     render() {
         return (
             <div className="dashboard">
-                <div className="dashboard-username">
-                    Username: {this.props.username}
-                </div>
+                <button className='logout-button' onClick={() => this.logOut()}>Log out</button>
+                <img className='dashboard-img' src="https://i.imgur.com/p4W7NlO.jpg" alt='symphony-orchestra'></img>
                 <div className="dashboard-name">Welcome {this.props.name}!</div>
-                <Link to='/learn'><button onClick={() => this.props.dispatch(startUserSession())}>Let's Learn</button></Link>
-                <Link to='/progress'><button>Progress</button></Link>
+                <div className='dashboard-controls'>
+                    <Link to='/learn'><button className='learn-button' onClick={() => this.props.dispatch(startUserSession())}>Let's Learn</button></Link>
+                    <Link to='/progress'><button className='progress-button'>Progress</button></Link>
+                </div>
             </div>
         );
     }
@@ -25,7 +35,6 @@ const mapStateToProps = state => {
     return {
       username: state.auth.currentUser.username,
       name: `${currentUser.fullname}`,
-      protectedData: state.protectedData.data
     };
 };
 

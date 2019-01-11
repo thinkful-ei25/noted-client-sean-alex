@@ -19,6 +19,8 @@ export const itemError = (error) => ({
   error
 });
 
+
+// async for retrieving question from server
 export const fetchQuizItem = item => (dispatch, getState) => {
   dispatch(itemRequest());
 

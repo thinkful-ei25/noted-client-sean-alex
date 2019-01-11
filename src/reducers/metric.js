@@ -7,7 +7,7 @@ import {
 
 const initialState = {
   // numberOfSessions: 0,
-  // currentAverage: 0,
+  improvement: 0,
   allSessionsAvg: 0,
   lastSessionAvg: 0,
   loading: false,
@@ -23,9 +23,8 @@ export default function reducer(state=initialState, action){
     }
   }
   else if(action.type === METRIC_SUCCESS){
-    console.log(action.metric);
     return{
-      ...state,
+      improvement: action.metric.improvement,
       allSessionsAvg: action.metric.allSessionsAvg,
       lastSessionAvg: action.metric.lastSessionAvg,
       loading: false,

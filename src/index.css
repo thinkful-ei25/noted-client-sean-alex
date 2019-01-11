@@ -94,3 +94,15 @@ button.progress-button{
   height: auto;
   border-radius: 4px;
 }
+
+.correct-feedback{
+  background-color: green;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.incorrect-feedback{
+  background-color: red;
+  padding: 10px;
+  border-radius: 4px;
+}

@@ -1,5 +1,5 @@
 # Noteful
-[Client](https://noted-client.herokuapp.com/dashboard)
+[Client](https://noted-client.herokuapp.com)
 [Server](https://noted-server.herokuapp.com/api)
 
 ## Tech Stack
@@ -12,5 +12,5 @@
 ## Features
 - Active learning using spaced repetition.
 - Feedback provided after each answered question.
-- Tracks and reports ser progress after each learning session.
+- Tracks and reports user progress after each learning session.
 - Comparisons of user progress between sessions.

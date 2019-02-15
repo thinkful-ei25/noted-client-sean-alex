@@ -42,7 +42,8 @@ Noted is an application focused on helping users learn musical notation and impr
 ### POST /api/metric/startSession
 
 **Purpose**: To creates a new session (an empty array) for the user. Each question score will be stored in this array. 
-**Place**: When the user hits the let's learn button
+**Place**: When the user hits the let's learn button. 
+
 **Protected End Point**
 
 ### POST /api/metric/endSession
@@ -56,6 +57,7 @@ Noted is an application focused on helping users learn musical notation and impr
 
 **Purpose**: To retrieve and display the next question in the queue to the user. 
 **Place**: When the user just answered a question. 
+
 **Protected Endpoint**
 
 **Response Body**
@@ -75,6 +77,8 @@ Noted is an application focused on helping users learn musical notation and impr
 
 **Pupose**: When the users guesses the name of the symbol, this guess is given to the backend to determine if it is correct or not. The backend then responds with whether the user is correct or not. 
 **Place** This happens right after a user guesses the name of a symbol. 
+
+**Protected Endpoint**
 
 **Request Body**: 
 ``` 
